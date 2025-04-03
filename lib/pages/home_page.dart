@@ -12,10 +12,15 @@ class HomePage extends StatelessWidget {
   final ColorGenerator _colorGenerator = ColorGenerator();
 
   void _changeColor(BuildContext context) {
-    final newColor = _colorGenerator.generateColor();
+    final newColor = _colorGenerator.generateColorUsingLCG();
 
     context.read<ChangeColorCubit>().changeColor(newColor: newColor);
   }
+  
+  void _returnInitialColor(BuildContext context){
+    context.read<ChangeColorCubit>().setInitialColor();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +31,7 @@ class HomePage extends StatelessWidget {
         builder: (context, state) {
           return GestureDetector(
             onTap: () => _changeColor(context),
+            onLongPress: () => _returnInitialColor(context),
             child: Scaffold(
               backgroundColor: state.backgroundColor,
               body: const Center(

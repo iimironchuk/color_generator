@@ -5,15 +5,22 @@ import 'package:test_task/change_color_cubit/change_color_state.dart';
 
 ///Cubit for changing backgroundColor
 class ChangeColorCubit extends Cubit<ChangeColorState> {
-  ///constructor
+  ///Constructor
   ChangeColorCubit() : super(ChangeColorState());
 
-  ///method for emitting new color to state
+  ///Method for emitting new color to state
   void changeColor({required Color newColor}) {
     emit(
       state.copyWith(
         backgroundColor: newColor,
       ),
+    );
+  }
+
+  ///Method to return initial background color
+  void setInitialColor(){
+    emit(
+      ChangeColorState(),
     );
   }
 }
