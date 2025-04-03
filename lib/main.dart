@@ -1,7 +1,12 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:test_task/change_color_cubit/change_color_cubit.dart';
 import 'package:test_task/pages/home_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const MyApp());
 }
 
@@ -10,6 +15,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: HomePage());
+    return BlocProvider(
+      create: (context) => ChangeColorCubit(),
+      child: MaterialApp(home: const HomePage(), builder: BotToastInit()),
+    );
   }
 }

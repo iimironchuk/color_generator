@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ChangeColorState {
   Color get backgroundColor => throw _privateConstructorUsedError;
+  SavingStatus get savingStatus => throw _privateConstructorUsedError;
 
   /// Create a copy of ChangeColorState
   /// with the given fields replaced by the non-null parameter values.
@@ -33,7 +34,7 @@ abstract class $ChangeColorStateCopyWith<$Res> {
     $Res Function(ChangeColorState) then,
   ) = _$ChangeColorStateCopyWithImpl<$Res, ChangeColorState>;
   @useResult
-  $Res call({Color backgroundColor});
+  $Res call({Color backgroundColor, SavingStatus savingStatus});
 }
 
 /// @nodoc
@@ -50,7 +51,7 @@ class _$ChangeColorStateCopyWithImpl<$Res, $Val extends ChangeColorState>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? backgroundColor = null}) {
+  $Res call({Object? backgroundColor = null, Object? savingStatus = null}) {
     return _then(
       _value.copyWith(
             backgroundColor:
@@ -58,6 +59,11 @@ class _$ChangeColorStateCopyWithImpl<$Res, $Val extends ChangeColorState>
                     ? _value.backgroundColor
                     : backgroundColor // ignore: cast_nullable_to_non_nullable
                         as Color,
+            savingStatus:
+                null == savingStatus
+                    ? _value.savingStatus
+                    : savingStatus // ignore: cast_nullable_to_non_nullable
+                        as SavingStatus,
           )
           as $Val,
     );
@@ -73,7 +79,7 @@ abstract class _$$ChangeColorStateImplCopyWith<$Res>
   ) = __$$ChangeColorStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Color backgroundColor});
+  $Res call({Color backgroundColor, SavingStatus savingStatus});
 }
 
 /// @nodoc
@@ -89,7 +95,7 @@ class __$$ChangeColorStateImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? backgroundColor = null}) {
+  $Res call({Object? backgroundColor = null, Object? savingStatus = null}) {
     return _then(
       _$ChangeColorStateImpl(
         backgroundColor:
@@ -97,6 +103,11 @@ class __$$ChangeColorStateImplCopyWithImpl<$Res>
                 ? _value.backgroundColor
                 : backgroundColor // ignore: cast_nullable_to_non_nullable
                     as Color,
+        savingStatus:
+            null == savingStatus
+                ? _value.savingStatus
+                : savingStatus // ignore: cast_nullable_to_non_nullable
+                    as SavingStatus,
       ),
     );
   }
@@ -105,15 +116,21 @@ class __$$ChangeColorStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ChangeColorStateImpl implements _ChangeColorState {
-  _$ChangeColorStateImpl({this.backgroundColor = Colors.white});
+  _$ChangeColorStateImpl({
+    this.backgroundColor = Colors.white,
+    this.savingStatus = SavingStatus.initial,
+  });
 
   @override
   @JsonKey()
   final Color backgroundColor;
+  @override
+  @JsonKey()
+  final SavingStatus savingStatus;
 
   @override
   String toString() {
-    return 'ChangeColorState(backgroundColor: $backgroundColor)';
+    return 'ChangeColorState(backgroundColor: $backgroundColor, savingStatus: $savingStatus)';
   }
 
   @override
@@ -122,11 +139,13 @@ class _$ChangeColorStateImpl implements _ChangeColorState {
         (other.runtimeType == runtimeType &&
             other is _$ChangeColorStateImpl &&
             (identical(other.backgroundColor, backgroundColor) ||
-                other.backgroundColor == backgroundColor));
+                other.backgroundColor == backgroundColor) &&
+            (identical(other.savingStatus, savingStatus) ||
+                other.savingStatus == savingStatus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, backgroundColor);
+  int get hashCode => Object.hash(runtimeType, backgroundColor, savingStatus);
 
   /// Create a copy of ChangeColorState
   /// with the given fields replaced by the non-null parameter values.
@@ -141,11 +160,15 @@ class _$ChangeColorStateImpl implements _ChangeColorState {
 }
 
 abstract class _ChangeColorState implements ChangeColorState {
-  factory _ChangeColorState({final Color backgroundColor}) =
-      _$ChangeColorStateImpl;
+  factory _ChangeColorState({
+    final Color backgroundColor,
+    final SavingStatus savingStatus,
+  }) = _$ChangeColorStateImpl;
 
   @override
   Color get backgroundColor;
+  @override
+  SavingStatus get savingStatus;
 
   /// Create a copy of ChangeColorState
   /// with the given fields replaced by the non-null parameter values.

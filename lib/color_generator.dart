@@ -21,6 +21,7 @@ class ColorGenerator {
     );
   }
 
+  ///Method for generate number using linear congruential generator
   Color generateColorUsingLCG() {
     return Color.fromARGB(
       _alphaValue,
