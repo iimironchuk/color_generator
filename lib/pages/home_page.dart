@@ -17,24 +17,26 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late final ChangeColorCubit _changeColorCubit;
+  // late final ChangeColorCubit _changeColorCubit;
+  ChangeColorCubit get _changeColorCubit => context.read<ChangeColorCubit>();
   final ColorGenerator _colorGenerator = ColorGenerator();
 
   @override
   void initState() {
     super.initState();
-    _changeColorCubit = context.read<ChangeColorCubit>();
     _changeColorCubit.getInitialColor();
   }
 
-  void _changeColor(BuildContext context) {
+  void _changeColor() {
+    //Here you can also use .generateColorUsingRandom to call the method with
+    //dart:math for generation
     final newColor = _colorGenerator.generateColorUsingLCG();
 
-    context.read<ChangeColorCubit>().changeColor(newColor: newColor);
+    _changeColorCubit.changeColor(newColor: newColor);
   }
 
-  void _returnInitialColor(BuildContext context) {
-    context.read<ChangeColorCubit>().setInitialColor();
+  void _returnInitialColor() {
+    _changeColorCubit.setInitialColor();
   }
 
   void _saveColorAsInitial(Color color) {
@@ -60,8 +62,8 @@ class _HomePageState extends State<HomePage> {
       },
       builder: (context, state) {
         return GestureDetector(
-          onTap: () => _changeColor(context),
-          onLongPress: () => _returnInitialColor(context),
+          onTap: _changeColor,
+          onLongPress: _returnInitialColor,
           child: Scaffold(
             backgroundColor: state.backgroundColor,
             body: Center(
