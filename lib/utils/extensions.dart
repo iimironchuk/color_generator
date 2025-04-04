@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 ///Extension to convert color to hex string
+// ignore: prefer_match_file_name
 extension ColorToHexExtension on Color {
   ///Method to convert color to hex string
   String toHex() {

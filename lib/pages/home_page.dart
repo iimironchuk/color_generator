@@ -17,7 +17,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // late final ChangeColorCubit _changeColorCubit;
   ChangeColorCubit get _changeColorCubit => context.read<ChangeColorCubit>();
   final ColorGenerator _colorGenerator = ColorGenerator();
 
