@@ -1,5 +1,8 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
+//I also decided to add shared preferences local storage so that the user
+//can save the color they like as default color.
+
 ///Service for using shared preferences storage
 class SharedPreferencesService {
   static final SharedPreferencesService _instance =
