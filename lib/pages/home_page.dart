@@ -1,5 +1,6 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_task/change_color_cubit/change_color_cubit.dart';
 import 'package:test_task/change_color_cubit/change_color_state.dart';
@@ -40,6 +41,12 @@ class _HomePageState extends State<HomePage> {
     _changeColorCubit.saveColorAsInitial(color: color);
   }
 
+  void _copyColorInHex(String text) {
+    Clipboard.setData(ClipboardData(text: text)).then((_) {
+      BotToast.showText(text: 'Color copied to clipboard');
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ChangeColorCubit, ChangeColorState>(
@@ -70,9 +77,12 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   const Spacer(),
-                  Text(
-                    state.backgroundColor.toHex(),
-                    style: const TextStyle(fontSize: 18.0),
+                  GestureDetector(
+                    onTap: () => _copyColorInHex(state.backgroundColor.toHex()),
+                    child: Text(
+                      state.backgroundColor.toHex(),
+                      style: const TextStyle(fontSize: 18.0),
+                    ),
                   ),
                   SafeArea(
                     child: ElevatedButton(

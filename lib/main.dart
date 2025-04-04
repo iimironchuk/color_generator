@@ -10,7 +10,10 @@ void main() async {
   runApp(const MyApp());
 }
 
+///Top-level class
+// ignore: prefer_match_file_name
 class MyApp extends StatelessWidget {
+  ///Constant constructor
   const MyApp({super.key});
 
   @override

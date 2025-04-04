@@ -33,8 +33,18 @@ class ChangeColorCubit extends Cubit<ChangeColorState> {
   }
 
   ///Method to return initial background color
-  void setInitialColor() {
-    emit(ChangeColorState());
+  Future<void> setInitialColor() async {
+    try {
+      final String? colorInHex = await _sharedPreferencesService.getHexColor();
+
+      if (colorInHex != null) {
+        emit(state.copyWith(backgroundColor: colorInHex.toColor()));
+      } else {
+        emit(ChangeColorState());
+      }
+    } catch (e) {
+      throw Exception(e);
+    }
   }
 
   ///Method for saving color to storage
@@ -52,7 +62,7 @@ class ChangeColorCubit extends Cubit<ChangeColorState> {
   }
 
   ///Method to clear status after successful saving
-  void clearSavingStatus(){
+  void clearSavingStatus() {
     emit(state.copyWith(savingStatus: SavingStatus.initial));
   }
 }
